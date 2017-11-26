@@ -114,12 +114,12 @@ var
 	temp: pelanggan;
 begin
 	rewrite(f);
-    for i:=0 to length(A)-1 do
-    begin
-        temp := A[i];
-        write(f, temp);
-    end;
-    close(f);
+    	for i:=0 to length(A)-1 do
+    	begin
+        	temp := A[i];
+        	write(f, temp);
+    	end;
+    	close(f);
 end;
 
 procedure readFromFile(var A: tabel);
@@ -129,21 +129,21 @@ var
 	i: integer;
 	temp: pelanggan;
 begin
-    if fileExists('data.dat') then
+    	if fileExists('data.dat') then
 		assign(f,'data.dat')
-    else
+    	else
 	begin
 		fileCreate('data.dat');
 		assign(f,'data.dat');
 	end;
 	
-    reset(f);
-    i:=0;
-    while not eof(f) do begin
-        read(f, temp);
-        setLength(A,i+1);
-        A[i]:= temp;
-        i:=i+1;
+    	reset(f);
+   	i:=0;
+    	while not eof(f) do begin
+        	read(f, temp);
+        	setLength(A,i+1);
+        	A[i]:= temp;
+        	i:=i+1;
 	end;
 end;
 
@@ -275,12 +275,12 @@ procedure sortName(var A: tabel);
 {IS. Terdefinisi data pelanggan dalam array
  FS. Mengurutkan data pelanggan dalam array berdasarkan nama pelanggan}
 var
-    i,pass,ix: integer;
-    temp: pelanggan;
+    	i,pass,ix: integer;
+    	temp: pelanggan;
 	opt: char;
 begin
 	writeln(garis);
-		writeln('Data akan diurutkan berdasarkan nama');
+	writeln('Data akan diurutkan berdasarkan nama');
 	writeln('[1]Dari A-Z');
 	writeln('[2]Dari Z-A');
 	write('Masukkan pilihan :');
@@ -311,11 +311,11 @@ var
 begin
 	writeln(garis);
 	writeln('Data akan diurutkan berdasarkan golongan');
-    writeln('[1]Dari besar ke kecil');
+    	writeln('[1]Dari besar ke kecil');
 	writeln('[2]Dari kecil ke besar');
 	write('Masukkan pilihan: ');
     repeat
-        readln(opt);
+    	readln(opt);
     until (opt='1') or (opt='2');
     for pass:=0 to length(A)-2 do begin
 		ix:=pass;
@@ -345,7 +345,7 @@ procedure sortData(var A: tabel);
 {IS. Terdefinisi data pelanggan dalam array
  FS. Mengurutkan data pelanggan dalam array}
 var
-    opsi: char;
+    	opsi: char;
 begin
 	writeln(garis);
 	writeln('[1]Berdasarkan Nama');
@@ -364,13 +364,13 @@ var
 	temp: pelanggan;
 begin
 	writeln(garis);
-    writeln('Edit Data');
+    	writeln('Edit Data');
 	repeat
 		write('Data yang akan di Edit: '); readln(opsi);
 	until opsi<=length(A);
-    opsi:=opsi-1;
-    repeat
-        write('Nama             : '); readln(temp.nama);
+    	opsi:=opsi-1;
+    	repeat
+        	write('Nama             : '); readln(temp.nama);
 		write('Alamat           : '); readln(temp.alamat);
 		writeln('Daya Listrik');
 		repeat
@@ -396,26 +396,26 @@ var
 	p: char;
 begin
 	n:=length(A);
-    writeln('Delete Data');
-    repeat
-        write('Data yang akan dihapus: '); readln(opsi);
-    until(opsi>=1) and (opsi<=length(A));
+    	writeln('Delete Data');
+    	repeat
+       		write('Data yang akan dihapus: '); readln(opsi);
+    	until(opsi>=1) and (opsi<=length(A));
 
-    repeat
-        write('Yakin akan menghapus data no.',opsi,'? (y/n): ');
-        readln(p);
-    until (lowercase(p)='y') or (lowercase(p)='n');
+    	repeat
+        	write('Yakin akan menghapus data no.',opsi,'? (y/n): ');
+        	readln(p);
+    	until (lowercase(p)='y') or (lowercase(p)='n');
 
-    if (lowercase(p)='y') then
-    begin
-        i:=opsi-1;
-        while(i<n-1) do begin
-            if opsi-1<>n-1 then
-                A[i]:=A[i+1];
-            i:=i+1;
-        end;
-        setlength(A,n-1);
-    end;
+   	if (lowercase(p)='y') then
+    	begin
+        	i:=opsi-1;
+        	while(i<n-1) do begin
+            	if opsi-1<>n-1 then
+                	A[i]:=A[i+1];
+            		i:=i+1;
+        	end;
+        	setlength(A,n-1);
+    	end;
 end;
 
 procedure viewMenuOption(pil: char);
@@ -484,20 +484,20 @@ var
         option: char;
 begin
 	repeat
-        repeat
+        	repeat
 			clrscr;
-            for i:=0 to length(A)-1 do begin
+            		for i:=0 to length(A)-1 do begin
 				if (i mod 4 = 0) then
 				begin
 					writeln(garis);
 					writeln('DATA PELANGGAN');
 					writeln(garis);
 				end;
-                writeln('No.              : ',i+1);
-                writeln('Nama             : ',A[i].nama);
-                writeln('Alamat           : ',A[i].alamat);
-                writeln('Daya Listrik     : ',kategori(A[i].daya));
-                writeln;
+				writeln('No.              : ',i+1);
+				writeln('Nama             : ',A[i].nama);
+				writeln('Alamat           : ',A[i].alamat);
+				writeln('Daya Listrik     : ',kategori(A[i].daya));
+				writeln;
 				if ((i+1) mod 4 = 0) then
 				begin
 					writeln(garis);
@@ -522,7 +522,7 @@ begin
 					viewMenuOption(option);
 					clrscr;
 				end;
-            end;
+            		end;
         until (option='1') or (option='2') or (option='3') or (option='4') or (option='5');
 	until (option='5')
 end;
@@ -539,10 +539,10 @@ begin
 	writeln(garis);
 	writeln('INPUT DATA');
 	writeln(garis);
-    write('Nama             : '); readln(A[N].nama);
-    write('Alamat           : '); readln(A[N].alamat);
+    	write('Nama             : '); readln(A[N].nama);
+    	write('Alamat           : '); readln(A[N].alamat);
 	writeln('Daya Listrik');
-    repeat
+    	repeat
 		writeln('     1. 450VA');
 		writeln('     2. 900VA');
 		writeln('     3. 1300VA');
@@ -552,7 +552,7 @@ begin
 		writeln('Pilih golongan: ');
 		readln(A[N].daya);
 	until (A[N].daya=1) or (A[N].daya=2) or (A[N].daya=3) or (A[N].daya=4) or (A[N].daya=5) or (A[N].daya=6);
-    write('Data berhasil ditambahkan...'); readln;
+    	write('Data berhasil ditambahkan...'); readln;
 end;
 
 procedure optionMenu(opsi:integer);
@@ -561,8 +561,8 @@ procedure optionMenu(opsi:integer);
 begin
 	case opsi of
 	        1: inputMenu(tab);
-            2: viewMenu(tab);
-			3: viewBill(tab);
+            	2: viewMenu(tab);
+		3: viewBill(tab);
 	end;
 end;
 
@@ -575,14 +575,14 @@ begin
 	repeat
 	        clrscr;
 	        writeln(garis);
-			writeln('MENU UTAMA');
-			writeln(garis);
+		writeln('MENU UTAMA');
+		writeln(garis);
 	        writeln('1. Input Data          ');
-            writeln('2. View Data           ');
-            writeln('3. Lihat tagihan       ');
-            writeln('4. Exit                ');
-			writeln(garis);
-            write('Masukkan pilihan: '); readln(opsi);
+            	writeln('2. View Data           ');
+            	writeln('3. Lihat tagihan       ');
+            	writeln('4. Exit                ');
+		writeln(garis);
+            	write('Masukkan pilihan: '); readln(opsi);
 
 	until (opsi=1) or (opsi=2) or (opsi=3) or (opsi=4);
 	if opsi<>4 then
