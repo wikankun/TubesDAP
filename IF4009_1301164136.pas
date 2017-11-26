@@ -383,9 +383,9 @@ begin
 			writeln('Pilih golongan: ');
 			readln(temp.daya);
 		until (temp.daya=1) or (temp.daya=2) or (temp.daya=3) or (temp.daya=4) or (temp.daya=5) or (temp.daya=6);
-			write('Apakah anda yakin dengan inputan anda? [y/n]'); readln(p);
+		write('Apakah anda yakin dengan inputan anda? [y/n]'); readln(p);
 	until (lowercase(p)='y');
-        A[opsi]:=temp;
+	A[opsi]:=temp;
 end;
 
 procedure deleteData(var A: tabel);
@@ -480,13 +480,13 @@ procedure viewMenu(var A: tabel);
 {IS. Terdefinisi data pelanggan dalam array
  FS. Menampilkan data pelanggan}
 var
-        i: integer;
-        option: char;
+	i: integer;
+	option: char;
 begin
 	repeat
-        	repeat
+		repeat
 			clrscr;
-            		for i:=0 to length(A)-1 do begin
+			for i:=0 to length(A)-1 do begin
 				if (i mod 4 = 0) then
 				begin
 					writeln(garis);
@@ -522,7 +522,7 @@ begin
 					viewMenuOption(option);
 					clrscr;
 				end;
-            		end;
+			end;
         until (option='1') or (option='2') or (option='3') or (option='4') or (option='5');
 	until (option='5')
 end;
@@ -539,10 +539,10 @@ begin
 	writeln(garis);
 	writeln('INPUT DATA');
 	writeln(garis);
-    	write('Nama             : '); readln(A[N].nama);
-    	write('Alamat           : '); readln(A[N].alamat);
+	write('Nama             : '); readln(A[N].nama);
+	write('Alamat           : '); readln(A[N].alamat);
 	writeln('Daya Listrik');
-    	repeat
+	repeat
 		writeln('     1. 450VA');
 		writeln('     2. 900VA');
 		writeln('     3. 1300VA');
@@ -552,7 +552,7 @@ begin
 		writeln('Pilih golongan: ');
 		readln(A[N].daya);
 	until (A[N].daya=1) or (A[N].daya=2) or (A[N].daya=3) or (A[N].daya=4) or (A[N].daya=5) or (A[N].daya=6);
-    	write('Data berhasil ditambahkan...'); readln;
+	write('Data berhasil ditambahkan...'); readln;
 end;
 
 procedure optionMenu(opsi:integer);
@@ -560,8 +560,8 @@ procedure optionMenu(opsi:integer);
  FS. Memanggil prosedur yang bersangkutan}
 begin
 	case opsi of
-	        1: inputMenu(tab);
-            	2: viewMenu(tab);
+		1: inputMenu(tab);
+		2: viewMenu(tab);
 		3: viewBill(tab);
 	end;
 end;
@@ -573,16 +573,16 @@ var
 	opsi:integer;
 begin
 	repeat
-	        clrscr;
-	        writeln(garis);
+		clrscr;
+		writeln(garis);
 		writeln('MENU UTAMA');
 		writeln(garis);
-	        writeln('1. Input Data          ');
-            	writeln('2. View Data           ');
-            	writeln('3. Lihat tagihan       ');
-            	writeln('4. Exit                ');
+		writeln('1. Input Data          ');
+		writeln('2. View Data           ');
+		writeln('3. Lihat tagihan       ');
+		writeln('4. Exit                ');
 		writeln(garis);
-            	write('Masukkan pilihan: '); readln(opsi);
+		write('Masukkan pilihan: '); readln(opsi);
 
 	until (opsi=1) or (opsi=2) or (opsi=3) or (opsi=4);
 	if opsi<>4 then
