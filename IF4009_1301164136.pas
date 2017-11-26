@@ -155,19 +155,19 @@ var
 	i: integer;
 begin
 	i:=0; found:=false;
-		while (i <= length(A)-1) and (not found) do begin
-			if nama = A[i].nama then
-			begin
-				search:=i;
-				found:= true;
-			end
-			else
-				i:= i + 1;
-		end;
-		if not found then
+	while (i <= length(A)-1) and (not found) do begin
+		if nama = A[i].nama then
 		begin
-			search:=-1;
-		end;
+			search:=i;
+			found:= true;
+		end
+		else
+			i:= i + 1;
+	end;
+	if not found then
+	begin
+		search:=-1;
+	end;
 end;
 
 function SelisihBulan(bulan,tahun: word):integer;
@@ -298,7 +298,7 @@ begin
         temp:=A[pass];
         A[pass]:=A[ix];
         A[ix]:=temp;
-		end;
+	end;
 end;
 	
 procedure sortGol(var A: tabel);
@@ -314,10 +314,10 @@ begin
     	writeln('[1]Dari besar ke kecil');
 	writeln('[2]Dari kecil ke besar');
 	write('Masukkan pilihan: ');
-    repeat
-    	readln(opt);
-    until (opt='1') or (opt='2');
-    for pass:=0 to length(A)-2 do begin
+    	repeat
+    		readln(opt);
+    	until (opt='1') or (opt='2');
+    	for pass:=0 to length(A)-2 do begin
 		ix:=pass;
 			for i:=pass+1 to length(A)-1 do begin
 				if (A[i].daya>A[ix].daya) and (opt='1') then
@@ -328,7 +328,7 @@ begin
         temp:=A[pass];
         A[pass]:=A[ix];
         A[ix]:=temp;
-		end;
+	end;
 end;	
 	
 procedure sortDataOption(opsi: char);
